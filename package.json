@@ -1,0 +1,14 @@
+{
+  "name": "untitled-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Panya Batphantana <fanneioz@yahoo.co.th>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "jest": "^26.4.0"
+  }
+}
