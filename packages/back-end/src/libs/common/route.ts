@@ -1,14 +1,16 @@
 import { Controller } from "./controller";
 import { container } from "tsyringe";
 
+export type Method = 'get' | 'post' | 'put' | 'delete'
+
 export class Route {
-  static create(method: "get" | "post", path: string): Route {
+  static create(method: Method, path: string): Route {
     return new Route(method, path);
   }
   protected handler: Controller;
 
   protected constructor(
-    public readonly method: "get" | "post",
+    public readonly method: Method,
     public readonly path: string
   ) {}
 

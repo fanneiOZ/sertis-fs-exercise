@@ -56,8 +56,8 @@ export abstract class Controller {
     this.status = status;
   }
 
-  protected abstract async handleRequest<T, K>(
-    body?: T,
-    query?: K
+  protected abstract async handleRequest(
+    body?: unknown,
+    query?: unknown
   ): Promise<void>;
 }

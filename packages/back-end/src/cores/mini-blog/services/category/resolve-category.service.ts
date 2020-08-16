@@ -8,7 +8,7 @@ export class ResolveCategoryService {
        private categoryRepository: CategoryRepository
     ) {}
 
-    execute(name: string): Category {
+    async execute(name: string): Promise<Category> {
         const existingCategory = this.categoryRepository.getByName(name)
 
         if (!existingCategory) {

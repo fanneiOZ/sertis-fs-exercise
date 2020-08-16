@@ -18,7 +18,6 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
     }
 
     private constructor(
-
         private client: MongoClient
     ) {
         super()

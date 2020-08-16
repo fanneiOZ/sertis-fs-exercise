@@ -9,7 +9,7 @@ export class DeleteCardService {
         private cardRepository: CardRepository
     ) {}
 
-    execute(id: Identifier): boolean {
+    async execute(id: Identifier): Promise<boolean> {
         const card = this.cardRepository.getById(id)
 
         if (!card) {

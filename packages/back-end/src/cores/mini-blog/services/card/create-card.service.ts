@@ -10,7 +10,8 @@ export class CreateCardService {
        private cardRepository: CardRepository,
        private categoryResolver: ResolveCategoryService,
     ) {}
-    execute(name: string, content: string, categoryName: string): CardState {
+
+    async execute(name: string, content: string, categoryName: string): Promise<CardState> {
         const category = this.categoryResolver.execute(categoryName)
 
         const author = {id: 'id', name: 'name'}

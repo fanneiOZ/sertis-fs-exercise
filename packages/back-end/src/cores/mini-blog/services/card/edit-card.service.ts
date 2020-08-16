@@ -10,9 +10,9 @@ export class EditCardService {
     constructor(
         private cardRepository: CardRepository,
         private categoryResolver: ResolveCategoryService,
-    ) {
-    }
-    execute(id: Identifier, name: string, content: string, categoryName: string): CardState {
+    ) {}
+
+    async execute(id: Identifier, name: string, content: string, categoryName: string): Promise<CardState> {
         const card = this.cardRepository.getById(id)
 
         if (!card) {

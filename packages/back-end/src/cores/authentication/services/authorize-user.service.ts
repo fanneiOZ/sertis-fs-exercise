@@ -1,13 +1,15 @@
 import {Identifier} from "../../../libs/domain-driven/interfaces/repository.interface";
 import {UnauthorizedException, UserNotFoundException} from "../exceptions";
 import {UserRepository} from "../repositories/user.repository";
+import {GenerateTokenService} from "./generate-token.service";
 
 export class AuthorizeUserService {
     constructor(
-        private userRepository: UserRepository
+        private userRepository: UserRepository,
+        private generateTokenService: GenerateTokenService,
     ) {}
 
-    execute(id: Identifier, password: string, payload?: Record<string, unknown>): string {
+    async execute(id: Identifier, password: string, payload?: Record<string, unknown>): Promise<string> {
         const user = this.userRepository.getById(id)
 
         if (!user) {
@@ -18,6 +20,6 @@ export class AuthorizeUserService {
             throw new UnauthorizedException()
         }
 
-        return ''
+        return this.generateTokenService.execute(user.getState(), payload)
     }
 }
