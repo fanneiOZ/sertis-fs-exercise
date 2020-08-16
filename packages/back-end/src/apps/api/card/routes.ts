@@ -2,6 +2,7 @@ import {Route} from "../../../libs/common/route";
 import {AddCardController} from "./add-card.controller";
 import {DeleteCardController} from "./delete-card.controller";
 import {EditCardController} from "./edit-card.controller";
+import {GetCardsController} from "./get-cards.controller";
 
 export const cardRoutes: Route[] = [
     /**
@@ -16,4 +17,8 @@ export const cardRoutes: Route[] = [
      * Edit card by id
      */
     Route.create('put', '/card/:id').setHandler(EditCardController),
+    /**
+     * Get all cards
+     */
+    Route.create('get', '/cards').setHandler(GetCardsController)
 ]

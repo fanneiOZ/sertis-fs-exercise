@@ -17,7 +17,7 @@ export class CreateCardService {
 
         const id = nanoid(10)
 
-        const card = Card.create(id, category, name, content, author)
+        const card = Card.create(id, category.getState(), name, content, author)
 
         await this.cardRepository.create(card)
 

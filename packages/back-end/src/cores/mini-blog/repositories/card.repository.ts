@@ -27,7 +27,23 @@ export class CardRepository extends DocumentRepository<CardState>{
                 }
             }
 
-            return await this.db.select(this.entityInfo, query)
+            const data = await this.db.select(this.entityInfo, query) as CardState
+
+            return Card.create(data.id, data.category, data.name, data.content, data.author)
+        } catch (e) {
+            throw e
+        }
+    }
+
+    async getAll(): Promise<Card[]> {
+        try {
+            const data = await this.db.selectAll(this.entityInfo)
+
+            return data.map(data => {
+                const {id, category, name, content, author} = data as CardState
+
+                return Card.create(id, category, name, content, author)
+            })
         } catch (e) {
             throw e
         }

@@ -8,7 +8,7 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
     static getInstance(): MongoDbAdaptor {
         if (!this.instance) {
             const db = process.env.MONGO_URL ?? 'mongodb://localhost:27017'
-            const client = new MongoClient(db)
+            const client = new MongoClient(db, {useUnifiedTopology: true})
 
             this.instance = new MongoDbAdaptor(client)
         }
@@ -66,6 +66,17 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
             throw e
         }
     }
+
+    async selectAll<T>(schema: EntityInfo): Promise<T[]> {
+        try {
+            await this.setupConnection()
+            return await this.resolveCollection(schema).find({}).toArray()
+        } catch (e) {
+
+        }
+    }
+
+
 
     async truncate(schema: EntityInfo): Promise<boolean> {
         return Promise.resolve(false);

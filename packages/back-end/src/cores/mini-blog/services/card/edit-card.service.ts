@@ -21,12 +21,9 @@ export class EditCardService {
 
         const category = await this.categoryResolver.execute(categoryName)
 
-        const changed = card.edit(name, content)
-
-        card.addCategory(category)
+        const changed = card.edit(name, content, category.getState())
 
         if (changed) {
-
         }
 
         return card.getState()

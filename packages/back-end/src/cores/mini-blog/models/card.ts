@@ -1,27 +1,24 @@
 import {Identifier, Writable} from "../../../libs/domain-driven/interfaces/repository.interface";
-import {Category} from "./category";
 import {Author, CardState} from "./interfaces/card.interface";
+import {CategoryState} from "./interfaces/category.interface";
 
 export class Card extends Writable<CardState> {
     private readonly state: CardState
 
     static create(
         id: Identifier,
-        category: Category,
+        category: CategoryState,
         name: string,
         content: string,
         author: Author
     ): Card {
-        const categories = []
-        categories.push(category.getState())
-
         const state: CardState = {
             id,
             name,
             status: 'new',
             content,
             author,
-            categories,
+            category,
         }
 
         return new Card(state)
@@ -32,20 +29,7 @@ export class Card extends Writable<CardState> {
         this.state = state
     }
 
-    addCategory(category: Category): boolean {
-        const addingId = category.getId()
-        const existingCategory = this.state.categories.find(category => category.id === addingId)
-
-        if (!existingCategory) {
-            this.state.categories.push(category.getState())
-
-            return true
-        }
-
-        return false
-    }
-
-    edit(name: string, content: string): boolean {
+    edit(name: string, content: string, category?: CategoryState): boolean {
         let changed = false
 
         if (this.state.name !== name) {
@@ -55,6 +39,14 @@ export class Card extends Writable<CardState> {
 
         if (this.state.content !== content) {
             this.state.content = content
+            changed = true
+        }
+
+        if (
+            this.state.category.id !== category.id
+            || this.state.category.name !== category.name
+        ) {
+            this.state.category = category
             changed = true
         }
 
