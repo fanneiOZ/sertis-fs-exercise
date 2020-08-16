@@ -33,8 +33,15 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
         }
     }
 
-    async delete<T>(query: T): Promise<void> {
-        return Promise.resolve(undefined);
+    async delete<T>(schema: EntityInfo, query: T): Promise<boolean> {
+        try {
+            await this.setupConnection()
+            await this.resolveCollection(schema).deleteOne(query)
+
+            return true
+        } catch (e) {
+            throw e
+        }
     }
 
     async dropEntity(schema: EntityInfo): Promise<boolean> {
@@ -76,14 +83,26 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
         }
     }
 
-
-
     async truncate(schema: EntityInfo): Promise<boolean> {
-        return Promise.resolve(false);
+        try {
+            await this.setupConnection()
+            await this.resolveCollection(schema).deleteMany({})
+
+            return true
+        } catch (e) {
+            throw e
+        }
     }
 
-    async update<T, K>(data: T, query?: K): Promise<void> {
-        return Promise.resolve(undefined);
+    async update<T, K>(entity: EntityInfo, data: T, query: K): Promise<boolean> {
+        try {
+            await this.setupConnection()
+            await this.resolveCollection(entity).replaceOne(query, data)
+
+            return true
+        } catch (e) {
+            throw e
+        }
     }
 
     private async setupConnection(): Promise<void> {

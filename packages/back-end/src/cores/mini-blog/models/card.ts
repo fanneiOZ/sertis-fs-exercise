@@ -53,18 +53,16 @@ export class Card extends Writable<CardState> {
         return changed
     }
 
-    delete(): boolean {
-        if (this.state.status !== 'deleted') {
-            this.state.status = 'deleted'
-
-            return true
-        }
-
-        return false
+    isEditableBy(authorId: string): boolean {
+        return this.state.author.id === authorId
     }
 
     getState(): Readonly<CardState> {
         return this.state
+    }
+
+    getId(): Readonly<Identifier> {
+        return this.state.id
     }
 
     toJSON(): CardState {

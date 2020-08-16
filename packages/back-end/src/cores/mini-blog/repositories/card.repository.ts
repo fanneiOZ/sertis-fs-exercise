@@ -49,6 +49,25 @@ export class CardRepository extends DocumentRepository<CardState>{
         }
     }
 
+    async deleteById(id: Identifier): Promise<void> {
+        const query = {
+            id: {
+                $eq: id
+            }
+        }
+        await this.db.delete(this.entityInfo, query)
+    }
+
+    async update(card: Card): Promise<void> {
+        const query = {
+            id: {
+                $eq: card.getId()
+            }
+        }
+
+        await this.db.update(this.entityInfo, card, query)
+    }
+
     createPersistence(writable: Writable<CardState>): unknown {
         return writable.toJSON()
     }

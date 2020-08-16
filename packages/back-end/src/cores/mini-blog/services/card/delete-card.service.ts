@@ -1,6 +1,6 @@
 import {injectable} from "tsyringe";
 import {Identifier} from "../../../../libs/domain-driven/interfaces/repository.interface";
-import {CardState} from "../../models/interfaces/card.interface";
+import {UnauthorizedException} from "../../../authentication/exceptions";
 import {CardRepository} from "../../repositories/card.repository";
 
 @injectable()
@@ -9,17 +9,17 @@ export class DeleteCardService {
         private cardRepository: CardRepository
     ) {}
 
-    async execute(id: Identifier): Promise<boolean> {
+    async execute(id: Identifier, userId: string): Promise<boolean> {
         const card = await this.cardRepository.getById(id)
 
         if (!card) {
             return false
         }
 
-        const deleted = card.delete()
-
-        if (deleted) {
-
+        if (card.isEditableBy(userId)) {
+            await this.cardRepository.deleteById(id)
+        } else {
+            throw new UnauthorizedException()
         }
 
         return true

@@ -1,9 +1,9 @@
 import {injectable} from "tsyringe";
 import {AuthorizeUserService} from "../../../cores/authentication/services/authorize-user.service";
+import {Author} from "../../../cores/mini-blog/models/interfaces/card.interface";
 import {DeleteCardService} from "../../../cores/mini-blog/services/card/delete-card.service";
 import {Controller} from "../../../libs/common/controller";
 import {DI} from "../../../libs/common/decorators/di-decorator";
-import {Guard} from "../../../libs/common/decorators/guard.decorator";
 import {CardRequestQuery} from "./request.interfaces";
 
 @DI
@@ -20,8 +20,11 @@ export class DeleteCardController extends Controller {
         const token = this.getHeader('authorization') as string
         this.context = this.userAuthorizer.execute(token)
 
+        const {id: userId} = Object.entries(this.context)
+            .find(([entry]) => entry === 'user')[1] as Author
+
         const {id} = query
 
-        await this.deleteCardService.execute(id)
+        await this.deleteCardService.execute(id, userId.toString())
     }
 }
