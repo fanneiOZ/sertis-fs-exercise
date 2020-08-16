@@ -1,39 +1,39 @@
 import React from 'react'
 import './components/card/style.css'
-import CardList from "./components/card/card-list";
+import Route from "react-router-dom/es/Route";
+import Switch from "react-router-dom/es/Switch";
+import {connect} from "react-redux";
+
+const mapStateToProps = state => {
+    return {
+        appLoaded: state.common.appLoaded,
+        appName: state.common.appName,
+        currentUser: state.common.currentUser,
+    }}
 
 export function App(props) {
     const appName = props.name ?? ''
-    const cards = [
-        {
-            info: {
-                id: 0,
-                name: 'card name 1',
-                content: 'Content',
-                author: {
-                    id: 1,
-                    name: 'author-1',
-                },
-            },
-            editable: true,
-        },
-        {
-            info: {
-                id: 1,
-                name: 'card name 2',
-                content: 'Content',
-                author: {
-                    id: 1,
-                    name: 'author-2',
-                },
-            },
-            editable: false,
-        },
-    ]
+
+    if (props.appLoaded) {
+        return (
+            <div id="app-container">
+                <header>
+                    <h2>H3LL0 {appName}</h2>
+                </header>
+                <Switch>
+                    <Route exact path="/" />
+                </Switch>
+            </div>
+        )
+    }
+
     return (
         <div id="app-container">
-            <h2>H3LL0 {appName}</h2>
-            <CardList list={cards}/>
+            <header>
+                <h2>H3LL0 {appName}</h2>
+            </header>
         </div>
     )
 }
+
+export default connect(mapStateToProps)(App)
