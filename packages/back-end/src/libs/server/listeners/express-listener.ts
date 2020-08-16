@@ -13,6 +13,12 @@ export class ExpressListener extends AbstractListener<Express> {
 
   addRoutes(routes: Route[]): this {
     routes.forEach((route) => {
+      this.app.use((req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+      });
+
       this.app[route.method](route.path, (req, res, next) =>
         route.getHandler().handle(req, res, next)
       );

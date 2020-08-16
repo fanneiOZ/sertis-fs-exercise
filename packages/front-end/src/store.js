@@ -6,4 +6,4 @@ const middlewares = () => {
     return applyMiddleware(localStorageMiddleware)
 }
 
-export const store = createStore(appReducer, middlewares)
+export const store = createStore(appReducer, middlewares())

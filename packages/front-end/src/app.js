@@ -1,39 +1,33 @@
 import React from 'react'
-import './components/card/style.css'
-import Route from "react-router-dom/es/Route";
-import Switch from "react-router-dom/es/Switch";
-import {connect} from "react-redux";
+import {store} from "./store";
+import {FETCH_CARDS} from "./constants/action-types";
+import agent from "./agent";
+import {fetchCards} from "./services/card.service";
+import 'antd/dist/antd.css'
+import {Layout} from 'antd'
+import Editor from "./components/card/editor";
+import LoginForm from "./components/authentication/login-form";
+import AppHeader from "./components/layout/header";
+import AppContent from "./components/layout/content";
 
-const mapStateToProps = state => {
-    return {
-        appLoaded: state.common.appLoaded,
-        appName: state.common.appName,
-        currentUser: state.common.currentUser,
-    }}
-
-export function App(props) {
-    const appName = props.name ?? ''
-
-    if (props.appLoaded) {
-        return (
-            <div id="app-container">
-                <header>
-                    <h2>H3LL0 {appName}</h2>
-                </header>
-                <Switch>
-                    <Route exact path="/" />
-                </Switch>
-            </div>
-        )
+export default function App(props) {
+    const token = window.localStorage.getItem('jwt')
+    if (token) {
+        agent.setToken(token)
     }
 
+    fetchCards('current').then(cards =>
+        store.dispatch({type: FETCH_CARDS, payload: {cards}})
+    )
+
     return (
-        <div id="app-container">
-            <header>
-                <h2>H3LL0 {appName}</h2>
-            </header>
-        </div>
+        <>
+            <Layout className="layout" style={{display: 'flex', padding: '0', height: '100%'}}>
+                <AppHeader />
+                <AppContent />
+            </Layout>
+            <Editor/>
+            <LoginForm/>
+        </>
     )
 }
-
-export default connect(mapStateToProps)(App)

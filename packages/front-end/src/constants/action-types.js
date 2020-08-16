@@ -18,7 +18,13 @@ export const CARD_DELETED = 'CARD_DELETED'
 export const REGISTER_USER = 'REGISTER_USER'
 export const LOGIN = 'LOGIN'
 
+export const OPEN_SIGN_IN = 'OPEN_SIGN_IN'
+export const CLOSE_SIGN_IN = 'OPEN_SIGN_IN'
+
 export const FETCH_CARDS = 'FETCH_CARDS'
-export const ADD_CARED = 'ADD_CARD'
+export const ADD_CARD = 'ADD_CARD'
 export const EDIT_CARD = 'EDIT_CARD'
 export const DELETE_CARD = 'DELETE_CARD'
+
+export const OPEN_EDITOR = 'OPEN_EDITOR'
+export const CLOSE_EDITOR = 'CANCEL_EDITOR'
