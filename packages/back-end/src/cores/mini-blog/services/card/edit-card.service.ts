@@ -19,7 +19,7 @@ export class EditCardService {
             throw new CardNotFoundException()
         }
 
-        const category = this.categoryResolver.execute(categoryName)
+        const category = await this.categoryResolver.execute(categoryName)
 
         const changed = card.edit(name, content)
 

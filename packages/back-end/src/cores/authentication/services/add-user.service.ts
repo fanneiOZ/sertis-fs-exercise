@@ -11,17 +11,21 @@ export class AddUserService {
         private userRepository: UserRepository
     ) {}
 
-    async execute(id: Identifier): Promise<UserState> {
-        const existingUser = this.userRepository.getById(id)
+    async execute(id: Identifier, name: string, password: string): Promise<UserState> {
+        const existingUser = await this.userRepository.getById(id)
 
         if (existingUser) {
             throw new UserExistedException()
         }
 
-        const password = 'password'
-        const name = 'name'
-        const user = User.create(name, password)
+        const user = User.create(id, name, password)
 
-        return user.getState()
+        try {
+            await this.userRepository.create(user)
+
+            return user.getState()
+        } catch (e) {
+            throw e
+        }
     }
 }

@@ -12,7 +12,7 @@ export class CreateCardService {
     ) {}
 
     async execute(name: string, content: string, categoryName: string): Promise<CardState> {
-        const category = this.categoryResolver.execute(categoryName)
+        const category = await this.categoryResolver.execute(categoryName)
 
         const author = {id: 'id', name: 'name'}
         const id = 'id'

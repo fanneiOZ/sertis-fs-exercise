@@ -4,3 +4,7 @@ export interface UserState {
     id: Identifier
     name: string
 }
+
+export interface WritableUserState extends UserState {
+    password: string
+}

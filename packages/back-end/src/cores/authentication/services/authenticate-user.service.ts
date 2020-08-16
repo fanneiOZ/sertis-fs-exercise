@@ -12,7 +12,7 @@ export class AuthenticateUserService {
     ) {}
 
     async execute(id: Identifier, password: string): Promise<string> {
-        const user = this.userRepository.getById(id)
+        const user = await this.userRepository.getById(id)
 
         if (!user) {
             throw new UserNotFoundException()

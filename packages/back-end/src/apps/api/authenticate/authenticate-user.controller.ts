@@ -16,6 +16,8 @@ export class AuthenticateUserController extends Controller {
 
     @ContentType('application/json')
     protected async handleRequest(body: AuthenticateRequestBody): Promise<void> {
+        console.log(body)
+
         const token = await this.userAuthenticator.execute(body.id, body.password)
 
         this.resBody = {token}

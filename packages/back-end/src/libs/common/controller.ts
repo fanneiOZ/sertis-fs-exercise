@@ -8,7 +8,9 @@ export abstract class Controller {
 
   protected params: Map<string, string>;
 
-  private headers: Map<string, string>;
+  private incomingHeaders: Map<string, unknown>;
+
+  private additionalResponseHeaders: Map<string, string>;
 
   private status: number;
 
@@ -17,15 +19,15 @@ export abstract class Controller {
   protected context: Readonly<string | object> | undefined
 
   protected setHeader(key: string, value: string): void {
-    if (this.headers === undefined) {
-      this.headers = new Map();
+    if (this.additionalResponseHeaders === undefined) {
+      this.additionalResponseHeaders = new Map();
     }
 
-    this.headers.set(key, value);
+    this.additionalResponseHeaders.set(key, value);
   }
 
-  protected getHeader(key: string): string | undefined {
-    return this.headers.get(key)
+  protected getHeader(key: string): unknown {
+    return this.incomingHeaders.get(key)
   }
 
   async handle<T extends Request, K extends Response>(
@@ -33,16 +35,11 @@ export abstract class Controller {
     res: K,
     next?: NextFunction
   ): Promise<void> {
-    if (this.headers === undefined) {
-      this.headers = new Map();
-    }
+    this.incomingHeaders = new Map()
 
-    if (this.guard) {
-      const authorizer = container.resolve(AuthorizeUserService)
-      const token = req.header('Authorization')
-
-      this.context = authorizer.execute(token)
-    }
+    Object.entries(req.headers).map(([key, value]) => {
+      this.incomingHeaders.set(key, value)
+    })
 
     this.params = new Map<string, string>();
     Object.entries(req.params).forEach(([key, value]) => {
@@ -52,7 +49,7 @@ export abstract class Controller {
     try {
       await this.handleRequest(req.body, req.query);
 
-      for (const [key, value] of this.headers.entries()) {
+      for (const [key, value] of this.additionalResponseHeaders.entries()) {
         res.setHeader(key, value);
       }
       res.status(this.status ?? 200);

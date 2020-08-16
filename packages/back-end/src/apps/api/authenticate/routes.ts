@@ -6,7 +6,7 @@ export const authenticatorRoutes: Route[] = [
     /**
      * Add new user
      */
-    Route.create('post', '/user/').setHandler(AddUserController),
+    Route.create('post', '/user').setHandler(AddUserController),
     /**
      * Authenticate user
      */

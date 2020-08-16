@@ -59,8 +59,13 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
         return data;
     }
 
-    async select<T, K>(query: K): Promise<T> {
-        return Promise.resolve(undefined);
+    async select<T, K>(schema: EntityInfo, query: K): Promise<T> {
+        try {
+            await this.setupConnection()
+            return await this.resolveCollection(schema).findOne(query)
+        } catch (e) {
+            throw e
+        }
     }
 
     async truncate(schema: EntityInfo): Promise<boolean> {
