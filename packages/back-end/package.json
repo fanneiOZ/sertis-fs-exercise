@@ -6,7 +6,7 @@
     "clean": "rm -Rf dist/*",
     "compile": "tsc --project tsconfig.json",
     "prestart": "yarn run clean && yarn run compile",
-    "start": "HTTP_PORT=8080 node dist/index.js"
+    "start": "HTTP_PORT=3000 node dist/index.js"
   },
   "dependencies": {
     "express": "^4.17.1",

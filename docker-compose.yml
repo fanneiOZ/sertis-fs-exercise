@@ -11,6 +11,19 @@ services:
       - 80:80
     volumes:
       - ./packages/front-end:/www/data
-#  mongo:
-#    image: mongo
-#    container_name: untitled_db
+    links:
+      - backend
+  backend:
+    build:
+      context: ./dockerfiles/nodejs/
+      dockerfile: Dockerfile
+    image: untitled/backend:latest
+    container_name: untitled_backend
+    links:
+      - mongo
+    volumes:
+      - ./packages/back-end:/www/data
+    command: yarn run start
+  mongo:
+    image: mongo:4.0-xenial
+    container_name: untitled_db
