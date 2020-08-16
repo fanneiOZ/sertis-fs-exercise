@@ -1,0 +1,37 @@
+article.cardBlock {
+    border-color: aqua;
+    border-width: 1px;
+    border-style: solid;
+    width: 200px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+ul.card.header.commands {
+    display: inline-flex;
+    list-style-type: none;
+    vertical-align: middle;
+}
+
+ul.card.header.commands.visible {
+    visibility: visible;
+}
+ul.card.header.commands.hidden {
+    visibility: hidden;
+}
+
+header.card.header {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+span.card.header.name {
+    font-variant-caps: all-petite-caps;
+}
+
+span.card.body.content {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 3.5%;
+}
