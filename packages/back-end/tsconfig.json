@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitAny": true,
+    "outDir": "dist/",
+    "alwaysStrict": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "watch": [
+    "src"
+  ]
+}
