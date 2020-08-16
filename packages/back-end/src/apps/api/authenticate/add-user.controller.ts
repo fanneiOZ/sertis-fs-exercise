@@ -3,7 +3,7 @@ import {AddUserService} from "../../../cores/authentication/services/add-user.se
 import {Controller} from "../../../libs/common/controller";
 import {ContentType} from "../../../libs/common/decorators/content-type.decorator";
 import {DI} from "../../../libs/common/decorators/di-decorator";
-import {AuthenticateRequestBody, UserRequestBody} from "./request.interfaces";
+import {UserRequestBody} from "./request.interfaces";
 
 @DI
 @injectable()

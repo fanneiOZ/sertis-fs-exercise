@@ -1,7 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import {container} from "tsyringe";
-import {AuthorizeUserService} from "../../cores/authentication/services/authorize-user.service";
-import { HttpException } from "./http-exception";
+import {NextFunction, Request, Response} from "express";
+import {HttpException} from "./http-exception";
 
 export abstract class Controller {
   protected resBody: unknown;

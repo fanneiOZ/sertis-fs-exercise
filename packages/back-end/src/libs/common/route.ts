@@ -1,5 +1,5 @@
-import { Controller } from "./controller";
-import { container } from "tsyringe";
+import {container} from "tsyringe";
+import {Controller} from "./controller";
 
 export type Method = 'get' | 'post' | 'put' | 'delete'
 
