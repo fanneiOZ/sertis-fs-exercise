@@ -9,7 +9,8 @@ export class AuthorizeUserService {
     ) {}
 
     execute(token: string): string | object {
-        const claims = this.jwtAdaptor.verify(token)
+        const extractedToken = token.replace('Bearer', '').trim()
+        const claims = this.jwtAdaptor.verify(extractedToken)
 
         if (!claims) {
             throw new UnauthorizedException()

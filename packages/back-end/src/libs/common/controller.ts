@@ -49,9 +49,12 @@ export abstract class Controller {
     try {
       await this.handleRequest(req.body, req.query);
 
-      for (const [key, value] of this.additionalResponseHeaders.entries()) {
-        res.setHeader(key, value);
+      if (this.additionalResponseHeaders) {
+        for (const [key, value] of this.additionalResponseHeaders.entries()) {
+          res.setHeader(key, value);
+        }
       }
+
       res.status(this.status ?? 200);
     } catch (e) {
       const exception =

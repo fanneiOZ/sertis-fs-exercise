@@ -11,3 +11,6 @@ services:
       - 80:80
     volumes:
       - ./packages/front-end:/www/data
+#  mongo:
+#    image: mongo
+#    container_name: untitled_db

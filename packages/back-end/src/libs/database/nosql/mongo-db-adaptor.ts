@@ -1,4 +1,3 @@
-import {container} from "tsyringe";
 import {EntityInfo} from "../../domain-driven/interfaces/repository.interface";
 import {DbAdaptorAbstract} from "../db-adaptor.abstract";
 import {Collection, MongoClient} from 'mongodb';

@@ -13,7 +13,7 @@ export class EditCardService {
     ) {}
 
     async execute(id: Identifier, name: string, content: string, categoryName: string): Promise<CardState> {
-        const card = this.cardRepository.getById(id)
+        const card = await this.cardRepository.getById(id)
 
         if (!card) {
             throw new CardNotFoundException()

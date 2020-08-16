@@ -10,7 +10,7 @@ export class DeleteCardService {
     ) {}
 
     async execute(id: Identifier): Promise<boolean> {
-        const card = this.cardRepository.getById(id)
+        const card = await this.cardRepository.getById(id)
 
         if (!card) {
             return false

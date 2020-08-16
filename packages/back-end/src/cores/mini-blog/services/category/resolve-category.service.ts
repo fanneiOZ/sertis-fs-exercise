@@ -9,14 +9,13 @@ export class ResolveCategoryService {
     ) {}
 
     async execute(name: string): Promise<Category> {
-        const existingCategory = this.categoryRepository.getByName(name)
+        const existingCategory = await this.categoryRepository.getById(name)
 
-        if (!existingCategory) {
-            const category = Category.create(name)
+        if (existingCategory) return existingCategory
 
-            return category
-        }
+        const category = Category.create(name)
+        await this.categoryRepository.create(category)
 
-        return existingCategory
+        return category
     }
 }

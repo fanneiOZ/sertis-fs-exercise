@@ -1,9 +1,9 @@
-import {Identifier} from "../../../libs/domain-driven/interfaces/repository.interface";
+import {Identifier, Writable} from "../../../libs/domain-driven/interfaces/repository.interface";
 import {Category} from "./category";
 import {Author, CardState} from "./interfaces/card.interface";
 
-export class Card {
-    private state: CardState
+export class Card extends Writable<CardState> {
+    private readonly state: CardState
 
     static create(
         id: Identifier,
@@ -12,28 +12,32 @@ export class Card {
         content: string,
         author: Author
     ): Card {
+        const categories = []
+        categories.push(category.getState())
+
         const state: CardState = {
             id,
             name,
             status: 'new',
             content,
             author,
-            categories: [category],
+            categories,
         }
 
         return new Card(state)
     }
 
     private constructor(state: CardState) {
+        super()
         this.state = state
     }
 
     addCategory(category: Category): boolean {
         const addingId = category.getId()
-        const existingCategory = this.state.categories.find(category => category.getId() === addingId)
+        const existingCategory = this.state.categories.find(category => category.id === addingId)
 
         if (!existingCategory) {
-            this.state.categories.push(category)
+            this.state.categories.push(category.getState())
 
             return true
         }
@@ -69,5 +73,9 @@ export class Card {
 
     getState(): Readonly<CardState> {
         return this.state
+    }
+
+    toJSON(): CardState {
+        return this.state;
     }
 }
