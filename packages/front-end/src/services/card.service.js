@@ -14,3 +14,13 @@ function derivedCardPayload(data, currentUserId) {
         }
     })
 }
+
+export function addCard(name, content, categoryName) {
+    const card = {name, content, categoryName}
+
+    return agent.Card.add(card)
+        .then(data => ({
+            info: data,
+            editable: true
+        }))
+}

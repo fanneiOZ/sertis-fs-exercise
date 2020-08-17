@@ -20,6 +20,7 @@ export const LOGIN = 'LOGIN'
 
 export const OPEN_SIGN_IN = 'OPEN_SIGN_IN'
 export const CLOSE_SIGN_IN = 'OPEN_SIGN_IN'
+export const PASS_THROUGH_SIGN_IN = 'PASS_THROUGH_SIGN_IN'
 
 export const FETCH_CARDS = 'FETCH_CARDS'
 export const ADD_CARD = 'ADD_CARD'

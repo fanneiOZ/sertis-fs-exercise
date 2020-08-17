@@ -1,36 +1,43 @@
 import React from 'react'
 import CardBlock from "./block";
 import {Button, Col, Empty, Row} from 'antd'
-import {OPEN_EDITOR} from "../../constants/action-types";
+import {FETCH_CARDS, OPEN_EDITOR} from "../../constants/action-types";
 import {connect} from "react-redux";
+import {fetchCards} from "../../services/card.service";
 
 const mapStateToProps = state => ({
     currentUser: state.currentUser,
+    cards: state.cards,
 })
 
 const mapDispatchToProps = dispatch => ({
-    onClick: () =>
-        dispatch({type: OPEN_EDITOR})
+    openEditor: () =>
+        dispatch({type: OPEN_EDITOR}),
+    fetchCards: cards =>
+        dispatch({type: FETCH_CARDS, payload: {cards}}),
 })
 
 function CardGrid(props) {
-    const {list} = props
-    const cards = Array.from(list)
-        .map(card => (
-            <CardBlock key={card.info.id}
-                       cardInfo={card.info}
-                       editable={card.editable}
-            />
-        ))
+    fetchCards(props.currentUser?.id ?? '')
+        .then(data => {
+            props.fetchCards(data)
+        })
 
-    if (!cards.length) {
+    const cards = props.cards.map(card => (
+        <CardBlock key={card.info.id}
+                   cardInfo={card.info}
+                   editable={card.editable}
+        />
+    ))
+
+    if (!cards?.length) {
         const emptyDescription = (
             <span>
                 No blog entry ...
             </span>
         )
         const createButton = (
-            <Button type="primary" onClick={() => props.onClick()}>Create New</Button>
+            <Button type="primary" onClick={() => props.openEditor()}>Create New</Button>
         )
 
         return (

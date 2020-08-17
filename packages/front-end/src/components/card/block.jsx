@@ -1,12 +1,12 @@
 import React from 'react'
-import {Card, Typography, Avatar, Comment} from 'antd'
+import {Card, Typography, Avatar, Comment, Tag} from 'antd'
 import {EditTwoTone, DeleteTwoTone, UserOutlined} from '@ant-design/icons'
 
 const {Paragraph} = Typography
 
 export default function CardBlock(props) {
     const {cardInfo, editable} = props
-    const {id, name, content, author} = cardInfo
+    const {id, name, content, category, author} = cardInfo
 
     const actions = [
         <EditTwoTone key='edit'/>,
@@ -24,6 +24,7 @@ export default function CardBlock(props) {
                     {content}
                 </Paragraph>
                 <Comment author={author.name} avatar={avatar}/>
+                <Tag color="cyan">{category.name}</Tag>
             </Card>
         </>
     )

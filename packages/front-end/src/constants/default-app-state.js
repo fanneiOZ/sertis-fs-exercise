@@ -21,8 +21,8 @@ export const appState = {
     ],
     currentUser: undefined,
     //     {
-    //     id: 'Carole.Ernser',
-    //     name: 'Araceli Schmitt'
+    //     id: 'Parker29',
+    //     name: 'Karine Schoen'
     // },
     editing: false,
     authenticating: false,

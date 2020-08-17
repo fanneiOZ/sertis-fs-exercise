@@ -2,17 +2,15 @@ import {appState} from '../constants/default-app-state';
 import {
     CLOSE_EDITOR,
     CLOSE_SIGN_IN,
-    FETCH_CARDS,
+    FETCH_CARDS, LOGGED_IN,
     OPEN_EDITOR,
     OPEN_SIGN_IN,
-    PAGE_LOADED,
     PAGE_UNLOADED
 } from '../constants/action-types';
 
 export default (state = appState, action) => {
     switch (action.type) {
         case FETCH_CARDS:
-        case PAGE_LOADED:
             return {
                 ...state,
                 cards: action.payload.cards,
@@ -38,6 +36,11 @@ export default (state = appState, action) => {
             return {
                 ...state,
                 authenticating: false,
+            }
+        case LOGGED_IN:
+            return {
+                ...state,
+                currentUser: action.payload.user,
             }
         default:
             return state

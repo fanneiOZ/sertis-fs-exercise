@@ -1,8 +1,13 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {OPEN_EDITOR, OPEN_SIGN_IN} from "../../constants/action-types";
+import {
+    LOGGED_IN,
+    OPEN_EDITOR,
+    OPEN_SIGN_IN,
+} from "../../constants/action-types";
 import {Col, Layout, Menu, Row} from 'antd'
 import {FormOutlined, UserOutlined} from '@ant-design/icons'
+import {authenticate, getUser} from "../../services/auth.service";
 
 const {Header} = Layout
 
@@ -18,6 +23,13 @@ const mapDispatchToProps = dispatch => ({
         dispatch({type: OPEN_SIGN_IN}),
     openEditor: () =>
         dispatch({type: OPEN_EDITOR}),
+    passThruSignIn: () => {
+        authenticate('Parker29', 'abcde')
+            .finally(() => {
+                const user = getUser('Parker29')
+                dispatch({type: LOGGED_IN, payload: {user}})
+            })
+    },
 })
 
 function AppHeader(props) {
@@ -30,7 +42,7 @@ function AppHeader(props) {
     )
     const unauthenticatedItems = (
         <Menu.Item key="signIn"
-                   onClick={() => props.openSignIn()}
+                   onClick={props.passThruSignIn}
                    icon={<UserOutlined/>}>
             sign in
         </Menu.Item>

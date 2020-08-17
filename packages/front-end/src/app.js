@@ -1,8 +1,5 @@
 import React from 'react'
-import {store} from "./store";
-import {FETCH_CARDS} from "./constants/action-types";
 import agent from "./agent";
-import {fetchCards} from "./services/card.service";
 import 'antd/dist/antd.css'
 import {Layout} from 'antd'
 import Editor from "./components/card/editor";
@@ -15,10 +12,6 @@ export default function App(props) {
     if (token) {
         agent.setToken(token)
     }
-
-    fetchCards('current').then(cards =>
-        store.dispatch({type: FETCH_CARDS, payload: {cards}})
-    )
 
     return (
         <>

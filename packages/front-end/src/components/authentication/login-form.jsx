@@ -30,24 +30,22 @@ function LoginForm(props) {
                     </Button>,
                 ]}
             >
-                <p>
-                    <Form name={'login'}>
-                        <Form.Item
-                            label="Username"
-                            name="userName"
-                            rules={[{required: true, message: 'Please input user name'}]}
-                        >
-                            <Input/>
-                        </Form.Item>
-                        <Form.Item
-                            label="Password"
-                            name="password"
-                            rules={[{required: true, message: 'Please input password'}]}
-                        >
-                            <Input.Password allowClear/>
-                        </Form.Item>
-                    </Form>
-                </p>
+                <Form name={'login'}>
+                    <Form.Item
+                        label="Username"
+                        name="userName"
+                        rules={[{required: true, message: 'Please input user name'}]}
+                    >
+                        <Input/>
+                    </Form.Item>
+                    <Form.Item
+                        label="Password"
+                        name="password"
+                        rules={[{required: true, message: 'Please input password'}]}
+                    >
+                        <Input.Password allowClear/>
+                    </Form.Item>
+                </Form>
             </Modal>
         </>
     )
