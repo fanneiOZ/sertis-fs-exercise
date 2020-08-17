@@ -1,6 +1,5 @@
 import {injectable} from "tsyringe";
 import {AuthorizeUserService} from "../../../cores/authentication/services/authorize-user.service";
-import {Author} from "../../../cores/mini-blog/models/interfaces/card.interface";
 import {EditCardService} from "../../../cores/mini-blog/services/card/edit-card.service";
 import {Controller} from "../../../libs/common/controller";
 import {DI} from "../../../libs/common/decorators/di-decorator";
@@ -17,15 +16,9 @@ export class EditCardController extends Controller {
     }
 
     protected async handleRequest(body: CardRequestBody, query: CardRequestQuery): Promise<void> {
-        const token = this.getHeader('authorization') as string
-        this.context = this.userAuthorizer.execute(token)
+        const {name, content, categoryName, author} = body
+        const {id} = query
 
-        const {id: userId} = Object.entries(this.context)
-            .find(([entry]) => entry === 'user')[1] as Author
-
-        const { name, content, categoryName } = body
-        const { id } = query
-
-        await this.editCardService.execute(id, name, content, categoryName, userId.toString())
+        await this.editCardService.execute(id, name, content, categoryName, author.id)
     }
 }

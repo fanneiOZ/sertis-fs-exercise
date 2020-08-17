@@ -1,18 +1,6 @@
 version: '3'
 
 services:
-  frontend:
-    build:
-      context: ./dockerfiles/nginx/
-      dockerfile: Dockerfile
-    image: untitled/frontend:latest
-    container_name: untitled_frontend
-    ports:
-      - 80:80
-    volumes:
-      - ./packages/front-end:/www/data
-    links:
-      - backend
   backend:
     build:
       context: ./dockerfiles/nodejs/
