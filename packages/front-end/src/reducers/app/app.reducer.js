@@ -1,12 +1,11 @@
-import {appState} from '../constants/default-app-state';
+import {appState} from "./app.state";
 import {
-    CLOSE_EDITOR,
-    CLOSE_SIGN_IN,
+    CLOSE_EDITOR, CLOSE_SIGN_IN,
     FETCH_CARDS, LOGGED_IN,
     OPEN_EDITOR,
     OPEN_SIGN_IN,
     PAGE_UNLOADED
-} from '../constants/action-types';
+} from "../../constants/action-types";
 
 export default (state = appState, action) => {
     switch (action.type) {

@@ -1,0 +1,59 @@
+div.card-block {
+    display: inline-flex;
+    flex-direction: column;
+    width: 45%;
+    border-style: solid;
+    border-width: 0.01em;
+    border-color: lightgrey;
+    border-radius: 0.2em;
+    padding: 0.2em 0.2em 1em;
+    margin: 0.2em;
+}
+
+div.card-block > header {
+    order: 1;
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+}
+
+div.card-block > header > .title {
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    font-variant-caps: all-petite-caps;
+    font-weight: bolder;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+}
+
+div.card-block > header::after {
+    height: 0.01em;
+    background-color: lightgrey;
+    content: '';
+    overflow: hidden;
+    display: block;
+}
+
+
+div.card-block > article {
+    display: block;
+    display: -webkit-box;
+    order: 2;
+    height: 3.5em;
+    padding: 0.5em;
+    overflow: hidden;
+    text-overflow: fade(1em);
+    line-height: 1;
+    font-size: small;
+}
+
+div.card-block > footer {
+    order: 3;
+    display: flex;
+    padding-right: 0.2em;
+    padding-left: 0.2em;
+    justify-content: flex-end;
+}

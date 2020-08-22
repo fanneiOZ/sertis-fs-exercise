@@ -1,0 +1,16 @@
+header#app-header {
+    display: flex;
+    background-color: steelblue;
+    padding: 0;
+    height: 2em;
+    border-bottom-width: 0.01em;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+    color: white;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+    user-select: none;
+}

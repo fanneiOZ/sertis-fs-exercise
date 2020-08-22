@@ -29,3 +29,5 @@ export const DELETE_CARD = 'DELETE_CARD'
 
 export const OPEN_EDITOR = 'OPEN_EDITOR'
 export const CLOSE_EDITOR = 'CANCEL_EDITOR'
+
+

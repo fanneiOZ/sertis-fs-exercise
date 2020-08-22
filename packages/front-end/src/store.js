@@ -1,9 +1,18 @@
-import {applyMiddleware, createStore} from 'redux'
-import appReducer from './reducers/app-reducer'
-import {localStorageMiddleware} from "./middlewares/local-storage.middleware"
+import {applyMiddleware, combineReducers, createStore} from 'redux'
+import appReducer from './reducers/app/app.reducer'
+import {displayReducer} from "./reducers";
+import {localStorageMiddleware, loggerMiddleware} from "./middlewares";
 
-const middlewares = () => {
-    return applyMiddleware(localStorageMiddleware)
-}
+const middlewares = [
+    localStorageMiddleware,
+    loggerMiddleware
+]
 
-export const store = createStore(appReducer, middlewares())
+const reducers = combineReducers({
+    app: appReducer,
+    display: displayReducer,
+})
+
+export const store = createStore(reducers, applyMiddleware(...middlewares))
+
+console.log(store.getState())

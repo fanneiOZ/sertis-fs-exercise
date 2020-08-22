@@ -1,0 +1,57 @@
+header#app-header nav#navigation {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    order: 2;
+}
+
+header#app-header nav#navigation > ul {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    height: 100%;
+    align-items: center;
+}
+header#app-header nav#navigation > ul li {
+    display: table;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    padding: 0 0.5em;
+    height: 100%;
+}
+
+header#app-header nav#navigation > ul li.navigation.item {
+    display: table;
+    height: 100%;
+    line-height: 100%;
+}
+
+header#app-header nav#navigation > ul li.navigation.item * {
+    height: 100%;
+    line-height: 100%;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.button {
+    cursor: pointer;
+}
+.avatar {
+    content: 'PB';
+}
+.avatar::after {
+    border-radius: 50%;
+    background-color: beige;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    content: '';
+    font-variant-caps: all-petite-caps;
+    padding: 0.2em;
+    color: #8a0e2a;
+}
+
+header#app-header nav#navigation > ul li.button:hover {
+    background-color: rgba(255,255,255, 0.1);
+}

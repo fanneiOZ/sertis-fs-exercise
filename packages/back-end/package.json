@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -Rf dist/*",
     "compile": "tsc --project tsconfig.json",
-    "prestart": "yarn install && yarn run clean && yarn run compile",
+    "prestart": "yarn run clean && yarn run compile",
     "start": "HTTP_PORT=3000 node dist/index.js"
   },
   "dependencies": {
