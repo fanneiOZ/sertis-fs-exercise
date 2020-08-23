@@ -1,4 +1,4 @@
-export const state = {
+export const displayState = {
     modal: {
         activeId: undefined,
     },

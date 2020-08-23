@@ -1,7 +1,7 @@
-import {state} from './state'
+import {displayState} from './state'
 import {CLOSE_MODAL, CLOSE_SIDE_BAR, OPEN_MODAL, OPEN_SIDE_BAR} from '../constants/commands'
 
-export const displayReducer = (state = state, action) => {
+export const displayReducer = (state = displayState, action) => {
     switch (action.type) {
         case OPEN_MODAL:
             return {
