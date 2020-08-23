@@ -4,5 +4,5 @@ export const authenticationState = {
         id: undefined,
         password: undefined,
         name: undefined,
-    }
+    },
 }

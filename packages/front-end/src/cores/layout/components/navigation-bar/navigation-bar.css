@@ -53,5 +53,5 @@ header#app-header nav#navigation > ul li.navigation.item * {
 }
 
 header#app-header nav#navigation > ul li.button:hover {
-    background-color: rgba(255,255,255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }

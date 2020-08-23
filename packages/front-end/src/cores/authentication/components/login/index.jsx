@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from '../../../display/components/modal'
+import Modal from '../../../display/components/dialog'
 
 export function LoginForm(props) {
     return (

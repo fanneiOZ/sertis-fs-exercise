@@ -16,6 +16,10 @@ body {
     font-size: medium;
 }
 
+body.backdrop {
+    overflow: hidden;
+}
+
 @font-face {
     font-family: Lato;
 }

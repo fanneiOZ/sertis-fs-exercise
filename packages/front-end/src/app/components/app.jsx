@@ -14,10 +14,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 function App(props) {
-    useEffect(() => {
-        props.fetchCards()
-        document.title = props.app.appName
-    })
+    document.title = props.app.appName
+
+    props.fetchCards()
 
     return (
         <div id={'app'}>

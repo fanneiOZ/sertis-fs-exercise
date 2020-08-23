@@ -39,7 +39,6 @@ div.card-block > header::after {
     display: block;
 }
 
-
 div.card-block > article {
     display: block;
     display: -webkit-box;

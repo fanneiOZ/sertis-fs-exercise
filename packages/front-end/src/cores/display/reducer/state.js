@@ -2,7 +2,8 @@ export const displayState = {
     modal: {
         activeId: undefined,
     },
-    sideBar: {
+    sidePanel: {
         activeId: undefined,
     },
+    backdrop: false,
 }

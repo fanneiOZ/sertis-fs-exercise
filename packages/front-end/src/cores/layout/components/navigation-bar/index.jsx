@@ -3,12 +3,13 @@ import {UserOutlined} from '@ant-design/icons'
 import './navigation-bar.css'
 import {connect} from 'react-redux'
 import {LoginForm} from '../../../authentication/components/login'
-import {OPEN_MODAL} from '../../../display/constants/commands'
-import {fetchCards} from '../../../card/actions/fetch-cards.action'
+import {openDialog} from '../../../display/actions/dialog.actions'
+import {openSidePanel} from '../../../display/actions/side-panel.actions'
+import SignUpComponent from '../../../authentication/components/sign-up'
 
 const mapDispatchToProps = dispatch => ({
-    login: modalId => dispatch({type: OPEN_MODAL, payload: {modalId}}),
-    fetchCard: () => dispatch(fetchCards()),
+    login: () => dispatch(openDialog('login-dialog')),
+    signup: () => dispatch(openSidePanel('sign-up-form')),
 })
 
 function NavigationBar(props) {
@@ -20,16 +21,18 @@ function NavigationBar(props) {
                         <span className={'avatar icon center'} />
                         <span>alias</span>
                     </li>
-                    <li id={'sign-in'} className={'navigation item button'} onClick={() => props.login('login-dialog')}>
+                    <li id={'sign-in'} className={'navigation item button'} onClick={() => props.login()}>
                         <UserOutlined className={'icon center'} />
                         <span>sign in</span>
                     </li>
-                    <li id={'fetch'} className={'navigation item button'} onClick={() => props.fetchCard()}>
-                        <span>fetch cards</span>
+                    <li id={'sign-up'} className={'navigation item button'} onClick={() => props.signup()}>
+                        <UserOutlined className={'icon center'} />
+                        <span>sign up</span>
                     </li>
                 </ul>
             </nav>
             <LoginForm />
+            <SignUpComponent />
         </>
     )
 }

@@ -4,11 +4,12 @@ export function getCurrentUser() {
     if (!token) {
         return {
             id: 'anonymous',
-            name: 'Anonymous User'
+            name: 'Anonymous User',
         }
     }
+
     return {
         id: 'user-id',
-        name: 'user-name'
+        name: 'user-name',
     }
 }
