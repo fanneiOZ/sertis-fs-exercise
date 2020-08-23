@@ -1,42 +1,40 @@
 import React, {useState} from 'react'
-import SidePanel from '../../../display/components/side-panel'
-import './sign-up.css'
-import {TextBox} from '../../../../libs/form/components/text-box'
-import {signUp} from '../../actions/sign-up.action'
-import {connect} from 'react-redux'
+import './sign-in.css'
 import {closeSidePanel} from '../../../display/actions/side-panel.actions'
+import SidePanel from '../../../display/components/side-panel'
+import {TextBox} from '../../../../libs/form/components/text-box'
+import {connect} from 'react-redux'
+import {signIn} from '../../actions/sign-in.action'
 
 const mapDispatchToProps = dispatch => ({
-    submitSignUp: (id, name, password) => dispatch(signUp({id, name, password})),
+    submitSignIn: (id, password) => dispatch(signIn({id, password})),
     close: id => dispatch(closeSidePanel(id)),
 })
 
-function SignUpComponent(props) {
-    const id = 'sign-up-form'
+function SignInComponent(props) {
+    const id = 'sign-in-form'
     const [userId, setUserId] = useState(undefined)
-    const [name, setName] = useState(undefined)
     const [password, setPassword] = useState(undefined)
 
     const handleSubmit = e => {
         e.preventDefault()
-        if (!userId || !name || !password) return
+        if (!userId || !password) return
 
-        props.submitSignUp(userId, name, password)
+        props.submitSignIn(userId, password)
     }
 
     return (
         <>
             <SidePanel id={id}>
                 <div id={id}>
-                    <header>Sign up</header>
+                    <header>Sign in</header>
                     <article>
                         <form id={id} onSubmit={handleSubmit}>
-                            <TextBox id={'name'} placeholder={'Your name'} hook={setName} />
                             <TextBox id={'userName'} placeholder={'Username'} hook={setUserId} />
                             <TextBox id={'password'} placeholder={'Password'} password hook={setPassword} />
                             <div style={{display: 'flex', alignContent: 'flex-end'}}>
                                 <input type='button' value={'cancel'} onClick={e => props.close(id)} />
-                                <input type='submit' value={'sign up'} />
+                                <input type='submit' value={'sign in'} />
                             </div>
                         </form>
                     </article>
@@ -46,4 +44,4 @@ function SignUpComponent(props) {
     )
 }
 
-export default connect(undefined, mapDispatchToProps)(SignUpComponent)
+export default connect(undefined, mapDispatchToProps)(SignInComponent)

@@ -1,0 +1,13 @@
+div#sign-in-form {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 30%;
+    display: flex;
+    flex-flow: column;
+    align-content: space-evenly;
+}
+
+form#sign-in-form {
+    display: flex;
+    flex-flow: column;
+}
