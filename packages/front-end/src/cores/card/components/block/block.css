@@ -18,6 +18,8 @@ div.card-block > header {
 }
 
 div.card-block > header > .title {
+    margin-top: 0;
+    margin-bottom: 0.2em;
     padding-left: 0.2em;
     padding-right: 0.2em;
     font-variant-caps: all-petite-caps;

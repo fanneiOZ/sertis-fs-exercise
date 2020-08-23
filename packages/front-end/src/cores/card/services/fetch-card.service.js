@@ -1,4 +1,4 @@
-import {SEND_HTTP_REQUEST} from '../../../reducers/http/commands'
+import {SEND_HTTP_REQUEST} from '../../../libs/http/constants/commands'
 import {CARDS_FETCHED} from '../constants/events'
 import {store} from '../../../store'
 

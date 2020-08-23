@@ -1,18 +1,15 @@
 import {applyMiddleware, combineReducers, createStore} from 'redux'
-import appReducer from './reducers/app/app.reducer'
-import {cardReducer, displayReducer, httpReducer} from './reducers'
+import appReducer from './app/reducer/app.reducer'
 import {localStorageMiddleware, loggerMiddleware} from './middlewares'
 import createSagaMiddleware from 'redux-saga'
 import RootSaga from './sagas'
+import {httpReducer} from './libs/http/reducer'
+import {cardReducer} from './cores/card/reducer'
+import {displayReducer} from './cores/display/reducer'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const middlewares = [
-    localStorageMiddleware,
-    loggerMiddleware,
-    // httpMiddleware,
-    sagaMiddleware,
-]
+const middlewares = [localStorageMiddleware, loggerMiddleware, sagaMiddleware]
 
 const reducers = combineReducers({
     app: appReducer,

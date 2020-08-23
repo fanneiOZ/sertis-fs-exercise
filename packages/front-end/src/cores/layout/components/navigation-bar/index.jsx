@@ -2,13 +2,13 @@ import React from 'react'
 import {UserOutlined} from '@ant-design/icons'
 import './navigation-bar.css'
 import {connect} from 'react-redux'
-import {LoginForm} from '../../authentication/login-form'
-import {OPEN_MODAL} from '../../../reducers/display/display.commands'
-import {fetchCard} from '../../../cores/card/actions/fetch-cards.action'
+import {LoginForm} from '../../../authentication/components/login'
+import {OPEN_MODAL} from '../../../display/constants/commands'
+import {fetchCards} from '../../../card/actions/fetch-cards.action'
 
 const mapDispatchToProps = dispatch => ({
     login: modalId => dispatch({type: OPEN_MODAL, payload: {modalId}}),
-    fetchCard: () => dispatch(fetchCard()),
+    fetchCard: () => dispatch(fetchCards()),
 })
 
 function NavigationBar(props) {

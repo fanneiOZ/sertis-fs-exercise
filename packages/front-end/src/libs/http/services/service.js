@@ -1,4 +1,4 @@
-import {REQUESTING} from "./constants";
+import {REQUESTING} from '../constants/constants'
 
 /**
  * Create new request state
@@ -12,7 +12,7 @@ export function sendHttpRequest(action) {
         [requestId]: {
             status: REQUESTING,
             payload,
-        }
+        },
     }
 }
 
@@ -30,7 +30,7 @@ export function dropHttpRequest(prevState, action) {
     }
 
     return {
-        ...prevState
+        ...prevState,
     }
 }
 
@@ -50,8 +50,8 @@ export function fulfillHttpRequest(status, prevState, action) {
             [requestId]: {
                 ...prevState.requestId,
                 status,
-                response
-            }
+                response,
+            },
         }
     }
 
