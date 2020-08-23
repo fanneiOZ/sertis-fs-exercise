@@ -1,7 +1,7 @@
 import {appState} from "./app.state";
 import {
     CLOSE_EDITOR, CLOSE_SIGN_IN,
-    FETCH_CARDS, LOGGED_IN,
+    LOGGED_IN,
     OPEN_EDITOR,
     OPEN_SIGN_IN,
     PAGE_UNLOADED
@@ -9,11 +9,6 @@ import {
 
 export default (state = appState, action) => {
     switch (action.type) {
-        case FETCH_CARDS:
-            return {
-                ...state,
-                cards: action.payload.cards,
-            }
         case PAGE_UNLOADED:
             return {}
         case OPEN_EDITOR:

@@ -173,10 +173,5 @@ export const appState = {
     "_id": "5f39c919f266a600442b0137"
 }
      */
-    currentUser: undefined,
     editing: false,
-    authenticating: false,
-    modalState: {
-        displayId: undefined,
-    }
 }

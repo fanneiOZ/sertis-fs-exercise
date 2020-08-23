@@ -20,5 +20,6 @@ export class AddUserController extends Controller {
         const user = await this.addUserService.execute(id, name, password ?? `${id}`)
 
         this.resBody = {user}
+        this.setHeader('Access-Control-Allow-Origin', '*')
     }
 }

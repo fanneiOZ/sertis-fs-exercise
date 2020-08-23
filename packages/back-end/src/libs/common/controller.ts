@@ -55,6 +55,10 @@ export abstract class Controller {
 
       res.status(this.status ?? 200);
     } catch (e) {
+      console.group(`EXCEPTION: ${e}`)
+      console.log(e)
+      console.groupEnd()
+
       const exception =
         e instanceof HttpException
           ? e

@@ -1,2 +1,5 @@
 export * from './display/display.reducer'
 export * from './app/app.reducer'
+export * from './authentication/authentication.reducer'
+export * from './http/reducer'
+export * from '../cores/card/reducer'

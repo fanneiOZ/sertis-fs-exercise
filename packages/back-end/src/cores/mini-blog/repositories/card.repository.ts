@@ -39,6 +39,8 @@ export class CardRepository extends DocumentRepository<CardState>{
         try {
             const data = await this.db.selectAll(this.entityInfo)
 
+            if (!data) return []
+
             return data.map(data => {
                 const {id, category, name, content, author} = data as CardState
 

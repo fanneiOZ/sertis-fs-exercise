@@ -1,0 +1,23 @@
+div.card-grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    height: 100%;
+    margin: 0.3em;
+    flex-grow: 1;
+    align-content: center;
+}
+
+div.card-grid > div.empty {
+    flex-grow: 1;
+    display: table;
+    height: 100%;
+    padding: 10%;
+    align-content: center;
+}
+
+div.card-grid > div.empty * {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}

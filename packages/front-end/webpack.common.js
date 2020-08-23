@@ -9,20 +9,20 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 options: {
-                    presets: ['@babel/env']
-                }
+                    presets: ['@babel/env'],
+                },
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader'],
             },
-        ]
+        ],
     },
     resolve: {extensions: ['*', '.js', '.jsx']},
     output: {
         path: path.resolve(__dirname, 'dist/'),
         publicPath: '/dist/',
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     devtool: 'source-map',
 }
