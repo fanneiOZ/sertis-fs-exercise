@@ -5,6 +5,9 @@ import '../../libs/layout/components/layout.css'
 import Header from '../../libs/layout/components/header'
 import {fetchCards} from '../../cores/card/actions/fetch-cards.action'
 import {authorizeUser} from '../../cores/authentication/actions/authorize-user.action'
+import { AddCardButton, AddCardComponent } from "../../cores/card/components/add-card";
+import SignInComponent from "../../cores/authentication/components/sign-in";
+import SignUpComponent from "../../cores/authentication/components/sign-up";
 
 const mapStateToProps = state => ({
     app: state.app,
@@ -30,6 +33,9 @@ function App(props) {
         <div id={'app'}>
             <Header style={{order: 1}} />
             <CardGrid style={{order: 2}} />
+            <SignInComponent />
+            <SignUpComponent />
+            <AddCardComponent />
         </div>
     )
 }

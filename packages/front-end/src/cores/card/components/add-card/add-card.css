@@ -1,0 +1,24 @@
+div#add-new-card-button.enabled {
+    visibility: visible;
+}
+div#add-new-card-button.disabled {
+    visibility: hidden;
+}
+
+div#add-new-card-button {
+    z-index: 0;
+    position: fixed;
+    display: block;
+    width: 48px;
+    height: 48px;
+    bottom: 1em;
+    right: 1em;
+    border-radius: 50%;
+    background-color: forestgreen;
+    cursor: pointer;
+}
+
+div#add-new-card-button:hover {
+    transform: scale(1.1, 1.1);
+    transition: all 0.2s ease-in-out;
+}

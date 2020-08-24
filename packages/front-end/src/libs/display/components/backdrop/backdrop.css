@@ -1,13 +1,17 @@
 div#untitled-backdrop.on {
     visibility: visible;
+    opacity: 0.75;
+    transition: opacity 1ms ease-in;
 }
 
 div#untitled-backdrop.off {
     visibility: hidden;
+    transition: opacity 1ms ease-in-out;
+    opacity: 0;
 }
 
 div#untitled-backdrop {
-    z-index: 0;
+    z-index: 1;
 
     position: fixed;
     top: 0;

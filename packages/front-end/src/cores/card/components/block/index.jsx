@@ -1,7 +1,6 @@
 import React from 'react'
 import './block.css'
 import {connect} from 'react-redux'
-import {MessageTwoTone} from '@ant-design/icons'
 
 const mapDispatchToProps = dispatch => ({})
 
@@ -11,10 +10,10 @@ function CardBlock(props) {
     return (
         <div className={'card-block'}>
             <header>
-                <h3 className={'title'}>
-                    <MessageTwoTone style={{marginRight: '0.2em'}} />
-                    <span>{data.name}</span>
-                </h3>
+                <h5 className={'card-category'}>
+                    <span>{data.category.name.toUpperCase()}</span>
+                </h5>
+                <h3 className={'title'}>{data.name}</h3>
             </header>
             <article>{data.content}</article>
             <footer>

@@ -38,7 +38,7 @@ div#untitled-modal > footer > nav > span#ok-btn::after {
 }
 
 div#untitled-modal {
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     top: 10%;
     left: 10%;
@@ -48,10 +48,10 @@ div#untitled-modal {
     flex-direction: column;
     width: 80%;
 
-    border-color: silver;
     border-style: solid;
-    border-width: 1px;
     border-radius: 0.35em;
+    border-width: 0.01em;
+    border-color: lightgrey;
 
     background-color: white;
 
@@ -61,7 +61,6 @@ div#untitled-modal {
 div#untitled-modal > header {
     order: 1;
     display: flex;
-    width: 100%;
     max-height: 20%;
     padding-bottom: 0.5em;
     padding-left: 0.5em;

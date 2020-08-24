@@ -9,50 +9,76 @@ div.card-block {
     margin: 0.2em;
     font-size: 8pt;
     font-weight: normal;
+    cursor: default;
+    background-color: white;
+}
+
+div.card-block:hover {
+    box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    background-color: floralwhite;
+    /*transform: scale(1.1, 1.1);*/
+    transition: all 0.5s ease-in-out;
+}
+div.card-block:not(:hover) {
+    /*opacity: 0.5;*/
 }
 
 div.card-block > header {
     order: 1;
-    display: table;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
     vertical-align: middle;
-    border-bottom-color: inherit;
-    border-bottom-style: inherit;
-    border-bottom-width: inherit;
+    padding-right: 0.2em;
+    padding-bottom: 0.5em;
+}
+
+div.card-block > header > .card-category {
+    line-height: 5pt;
+    height: 5pt;
+    margin: 0;
+    padding: 3pt 3pt 1em;
+    user-select: none;
+}
+
+div.card-block > header > .card-category > * {
+    display: inline-block;
+    font-size: 0.5rem;
+    font-weight: bolder;
+    font-family: sans-serif;
+    color: saddlebrown;
+    width: initial;
+    padding: 0 0 0.5rem;
+    margin: initial;
 }
 
 div.card-block > header > .title {
     margin-top: 0;
     margin-bottom: 0.2em;
+    padding-top: 0.2em;
     padding-left: 0.2em;
     padding-right: 0.2em;
-    font-variant-caps: all-petite-caps;
+    padding-bottom: 0.2em;
     font-weight: bold;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: pre-wrap;
+    line-height: 1rem;
     overflow: hidden;
-    display: table-cell;
     vertical-align: middle;
     font-size: 1rem;
+    word-wrap: break-word;
 }
-
-/*div.card-block > header::after {*/
-/*    height: 0.01em;*/
-/*    background-color: lightgrey;*/
-/*    content: '';*/
-/*    overflow: hidden;*/
-/*    display: block;*/
-/*}*/
 
 div.card-block > article {
     display: block;
     display: -webkit-box;
     order: 2;
-    height: 3.5em;
-    padding: 0.5em;
+    padding: 0.2em;
     overflow: hidden;
-    text-overflow: fade(1em);
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+    max-lines: 3;
     line-height: 1;
+    font-weight: lighter;
 }
 
 div.card-block > footer {

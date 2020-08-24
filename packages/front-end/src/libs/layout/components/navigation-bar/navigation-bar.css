@@ -5,6 +5,7 @@ header#app-header nav#navigation {
     margin: 0;
     height: 100%;
     order: 2;
+    font-size: 9pt;
 }
 
 header#app-header nav#navigation > ul {
@@ -39,18 +40,16 @@ header#app-header nav#navigation > ul li.navigation.item * {
     cursor: pointer;
 }
 .avatar {
-    content: 'PB';
-}
-.avatar::after {
     border-radius: 50%;
-    background-color: beige;
     display: block;
-    width: 1.5em;
-    height: 1.5em;
-    content: '';
-    font-variant-caps: all-petite-caps;
-    padding: 0.2em;
-    color: #8a0e2a;
+    width: 18px !important;
+    height: 18px !important;
+    max-height: 18px !important;
+    line-height: 18px;
+    margin: 0.2em;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 header#app-header nav#navigation > ul li.button:hover {

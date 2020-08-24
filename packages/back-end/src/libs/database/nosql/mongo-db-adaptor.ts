@@ -77,7 +77,7 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
     async selectAll<T>(schema: EntityInfo): Promise<T[]> {
         try {
             await this.setupConnection()
-            return await this.resolveCollection(schema).find({}).toArray()
+            return await this.resolveCollection(schema).find({}).sort({id: -1}).toArray()
         } catch (e) {
 
         }

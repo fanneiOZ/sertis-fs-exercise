@@ -1,10 +1,9 @@
 import React from 'react'
-import {UserOutlined} from '@ant-design/icons'
+import {UserOutlined, AppstoreAddOutlined, SolutionOutlined} from '@ant-design/icons'
 import './navigation-bar.css'
 import {connect} from 'react-redux'
-import SignInComponent from '../../../../cores/authentication/components/sign-in'
 import {openSidePanel} from '../../../display/actions/side-panel.actions'
-import SignUpComponent from '../../../../cores/authentication/components/sign-up'
+import {openDialog} from '../../../display/actions/dialog.actions'
 
 const mapStateToProps = state => ({
     currentUser: state.authentication.currentUser,
@@ -13,14 +12,21 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     signIn: () => dispatch(openSidePanel('sign-in-form')),
     signUp: () => dispatch(openSidePanel('sign-up-form')),
+    addNewCard: () => dispatch(openDialog('add-new-card')),
 })
 
 function NavigationBar(props) {
     const userMenu = props.currentUser ? (
-        <li id={'user'} className={'navigation item'}>
-            <span className={'avatar icon center'} />
-            <span>{props.currentUser.name}</span>
-        </li>
+        <>
+            <li id={'add-card'} className={'navigation item button'} onClick={props.addNewCard}>
+                <AppstoreAddOutlined className={'icon center'} />
+                <span>add new card</span>
+            </li>
+            <li id={'user'} className={'navigation item'}>
+                <SolutionOutlined className={'icon center'} />
+                <span>{props.currentUser.name}</span>
+            </li>
+        </>
     ) : (
         <>
             <li id={'sign-in'} className={'navigation item button'} onClick={props.signIn}>
@@ -39,8 +45,6 @@ function NavigationBar(props) {
             <nav id={'navigation'}>
                 <ul>{userMenu}</ul>
             </nav>
-            <SignInComponent />
-            <SignUpComponent />
         </>
     )
 }
