@@ -1,6 +1,7 @@
-import {Route} from '../../../libs/common/route'
-import {AddUserController} from './add-user.controller'
-import {AuthenticateUserController} from "./authenticate-user.controller";
+import { Route } from "../../../libs/common/route";
+import { AddUserController } from "./add-user.controller";
+import { AuthenticateUserController } from "./authenticate-user.controller";
+import { AuthorizeUserController } from "./authorize-user.controller";
 
 export const authenticatorRoutes: Route[] = [
   /**
