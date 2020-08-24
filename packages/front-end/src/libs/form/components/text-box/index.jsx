@@ -1,6 +1,6 @@
 import React from 'react'
 import './text-box.css'
-import {requiredId} from '../../../../cores/display/helpers/validation'
+import {requiredId} from '../../../display/helpers/validation'
 
 export function TextBox(props) {
     const {id, password, placeholder, hook} = props

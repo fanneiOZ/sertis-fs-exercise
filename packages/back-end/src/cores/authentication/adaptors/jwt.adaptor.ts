@@ -18,7 +18,7 @@ export class JwtAdaptor {
         return sign(payload, this.jwtSecretKey, this.signOptions)
     }
 
-    verify(token: string) {
+    verify(token: string): string | object {
         return verify(token, this.jwtSecretKey, this.signOptions)
     }
 }

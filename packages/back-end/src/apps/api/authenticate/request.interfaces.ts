@@ -10,3 +10,7 @@ export interface UserRequestBody {
     name: string
     password?: string
 }
+
+export interface AuthorizeRequestQuery {
+    token: string;
+}

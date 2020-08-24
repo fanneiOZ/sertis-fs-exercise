@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import SidePanel from '../../../display/components/side-panel'
+import SidePanel from '../../../../libs/display/components/side-panel'
 import './sign-up.css'
 import {TextBox} from '../../../../libs/form/components/text-box'
 import {signUp} from '../../actions/sign-up.action'
 import {connect} from 'react-redux'
-import {closeSidePanel} from '../../../display/actions/side-panel.actions'
+import {closeSidePanel} from '../../../../libs/display/actions/side-panel.actions'
 
 const mapDispatchToProps = dispatch => ({
     submitSignUp: (id, name, password) => dispatch(signUp({id, name, password})),
