@@ -13,7 +13,7 @@ function CardBlock(props) {
             <header>
                 <h3 className={'title'}>
                     <MessageTwoTone style={{marginRight: '0.2em'}} />
-                    {data.name}
+                    <span>{data.name}</span>
                 </h3>
             </header>
             <article>{data.content}</article>

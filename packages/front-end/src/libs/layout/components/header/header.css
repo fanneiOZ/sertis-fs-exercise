@@ -1,16 +1,47 @@
 header#app-header {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: 'logo navbar';
+    grid-template-rows: 100%;
     background-color: steelblue;
     padding: 0;
     height: 2em;
     border-bottom-width: 0.01em;
     border-bottom-color: grey;
-    border-bottom-style: solid;
     color: white;
-    flex-flow: row nowrap;
     overflow: hidden;
     justify-content: space-between;
-    align-items: center;
     cursor: default;
     user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+}
+
+span#app-title {
+    grid-area: logo;
+    display: table;
+    height: 100%;
+    padding-left: 0.5em;
+}
+
+span#app-title span#app-logo {
+    background-image: url('https://img.icons8.com/office/32/000000/blog.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 24px;
+    height: 32px;
+    display: block;
+    content: '';
+}
+
+span#app-title span#app-name {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 8px;
+    font-weight: bolder;
+    font-family: sans-serif;
 }

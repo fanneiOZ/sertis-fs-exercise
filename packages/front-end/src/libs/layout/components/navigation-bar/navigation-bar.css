@@ -1,5 +1,5 @@
 header#app-header nav#navigation {
-    display: inline-flex;
+    display: block;
     align-items: center;
     padding: 0;
     margin: 0;
@@ -12,6 +12,7 @@ header#app-header nav#navigation > ul {
     flex-flow: row nowrap;
     height: 100%;
     align-items: center;
+    margin: 0;
 }
 header#app-header nav#navigation > ul li {
     display: table;
@@ -54,4 +55,5 @@ header#app-header nav#navigation > ul li.navigation.item * {
 
 header#app-header nav#navigation > ul li.button:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color ease 200ms;
 }
