@@ -12,9 +12,9 @@ This repo built up without a name. Intend to write the code with practical style
     - docker-compose
     - yarn
     - Unix-based OS: macOS, Linux or WSL2
+    - Make sure following ports are not occupied: `3000`, `80`, `27017`
 - Run command
 
        sudo /bin/sh ./start.sh
        
-- Frontend will be served via `http://untitled.local`
-- Backend will be served via `http://api.untitled.local`
+- Frontend will be served via `http://untitled.local` or `http://localhost:80`
