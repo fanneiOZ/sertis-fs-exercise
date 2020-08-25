@@ -11,5 +11,3 @@ EXPOSE 3000
 RUN mkdir -p /www/data
 
 WORKDIR /www/data
-
-RUN yarn install
