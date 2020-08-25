@@ -3,7 +3,3 @@ export interface CardRequestBody {
     content: string
     categoryName: string
 }
-
-export interface CardRequestQuery {
-    id: string
-}
