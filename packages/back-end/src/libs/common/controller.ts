@@ -55,14 +55,21 @@ export abstract class Controller {
 
       res.status(this.status ?? 200);
     } catch (e) {
-      console.group(`EXCEPTION: ${e}`)
-      console.log(e)
-      console.groupEnd()
-
+      const apiInput = {
+        body: req.body,
+        headers: req.headers,
+        routes: req.route,
+        params: req.params,
+        query: req.query,
+      }
       const exception =
         e instanceof HttpException
-          ? e
-          : new HttpException(500, e.name, e.message).withCause(e);
+          ? e.withInput(apiInput)
+          : new HttpException(500, e.name, e.message).withCause(e).withInput(apiInput);
+
+      console.group(`EXCEPTION: ${exception}`)
+      console.log(exception)
+      console.groupEnd()
 
       res.status(exception.errorCode);
       this.resBody = { error: exception.name, msg: e.message };

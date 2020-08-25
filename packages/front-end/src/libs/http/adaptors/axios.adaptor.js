@@ -26,3 +26,12 @@ export const Post = (url, data, headers) => {
 
     return http.post(url, data, config)
 }
+
+export const Delete = (url, headers) => {
+    const config = {}
+    if (headers) {
+        Object.assign(config, {headers})
+    }
+
+    return http.delete(url, config)
+}

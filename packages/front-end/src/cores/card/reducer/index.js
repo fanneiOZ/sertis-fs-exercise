@@ -1,5 +1,5 @@
 import {cardsState} from './state'
-import {CARD_ADDED, CARDS_FETCHED} from '../constants/events'
+import {CARD_ADDED, CARD_DELETED, CARDS_FETCHED} from '../constants/events'
 
 export const cardReducer = (state = cardsState, action) => {
     switch (action.type) {
@@ -12,6 +12,13 @@ export const cardReducer = (state = cardsState, action) => {
             return {
                 ...state,
                 cards: [action.data, ...state.cards],
+            }
+        case CARD_DELETED:
+            const cards = state.cards.filter(card => card.id !== action.data.id)
+
+            return {
+                ...state,
+                cards,
             }
         default:
             return state

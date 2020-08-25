@@ -1,5 +1,6 @@
 export class HttpException extends Error {
   errorCause: Error;
+  input?: unknown
 
   constructor(
     public errorCode: number,
@@ -14,5 +15,11 @@ export class HttpException extends Error {
     this.errorCause = errorCause;
 
     return this;
+  }
+
+  withInput(input: unknown): HttpException {
+    this.input = input
+
+    return this
   }
 }
