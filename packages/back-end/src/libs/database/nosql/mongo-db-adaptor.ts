@@ -7,7 +7,7 @@ export class MongoDbAdaptor extends DbAdaptorAbstract {
 
     static getInstance(): MongoDbAdaptor {
         if (!this.instance) {
-            const db = process.env.MONGO_URL ?? 'mongodb://localhost:27017'
+            const db = process.env.MONGO_URL ?? 'mongodb://mongo:27017'
             const client = new MongoClient(db, {useUnifiedTopology: true})
 
             this.instance = new MongoDbAdaptor(client)

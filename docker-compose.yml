@@ -11,8 +11,6 @@ services:
       - 80:80
     volumes:
       - ./packages/front-end:/www/data
-    links:
-      - backend
   backend:
     build:
       context: ./dockerfiles/nodejs/
@@ -23,7 +21,11 @@ services:
       - mongo
     volumes:
       - .:/www/data
+    ports:
+      - 3000:3000
     command: yarn workspace back-end run start
   mongo:
     image: mongo:4.0-xenial
     container_name: untitled_db
+    ports:
+      - 27017:27017

@@ -6,7 +6,7 @@ import './card-controller.css'
 
 const mapDispatchToProps = dispatch => ({
     delete: id => dispatch(deleteCard(id)),
-    edit: id => dispatch()
+    edit: id => dispatch(),
 })
 
 function CardController(props) {
@@ -14,8 +14,8 @@ function CardController(props) {
 
     return (
         <div className={'control-card-buttons'}>
-            <EditOutlined className={'edit-card-icon'} onClick={() => props.edit(id)}/>
-            <DeleteOutlined className={'delete-card-icon'} onClick={() => props.delete(id)}/>
+            <EditOutlined className={'edit-card-icon'} />
+            <DeleteOutlined className={'delete-card-icon'} onClick={() => props.delete(id)} />
         </div>
     )
 }
