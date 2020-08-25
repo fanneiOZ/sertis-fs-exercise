@@ -39,7 +39,7 @@ div#untitled-modal > footer > nav > span#ok-btn::after {
 
 div#untitled-modal {
     z-index: 2;
-    position: absolute;
+    position: fixed;
     top: 10%;
     left: 10%;
     bottom: 10%;

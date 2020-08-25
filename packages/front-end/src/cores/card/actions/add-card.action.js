@@ -14,7 +14,7 @@ export function addCard(card) {
         payload: {
             timestamp: getUtcTimestamp(),
             actor: getCurrentUser(),
-            data: {card},
+            data: {...card},
         },
     }
 }

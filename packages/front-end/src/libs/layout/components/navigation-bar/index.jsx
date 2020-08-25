@@ -49,4 +49,4 @@ function NavigationBar(props) {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar)
+export default React.memo(connect(mapStateToProps, mapDispatchToProps)(NavigationBar))

@@ -15,8 +15,5 @@ export class GetCardsController extends Controller {
     @ContentType('application/json')
     protected async handleRequest(): Promise<void> {
         this.resBody = await this.getCardsService.execute()
-        this.setHeader('Access-Control-Allow-Origin', '*')
-        this.setHeader('Access-Control-Allow-Origin', '*')
-
     }
 }

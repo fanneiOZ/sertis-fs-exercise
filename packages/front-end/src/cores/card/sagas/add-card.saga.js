@@ -7,11 +7,8 @@ export function* addCardSaga(action) {
     try {
         const {data} = action.payload
         const token = window.localStorage.getItem('jwt')
-        const headers = {
-            authorization: `Bearer ${token}`,
-        }
         const response = yield call(Post, 'http://localhost:3000/card', data, {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
         })
 
         yield put(onCardAdded(response.data))

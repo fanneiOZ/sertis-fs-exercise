@@ -15,4 +15,4 @@ function Header(props) {
     )
 }
 
-export default connect()(Header)
+export default React.memo(connect()(Header))

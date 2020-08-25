@@ -18,4 +18,4 @@ function CardGrid(props) {
     )
 }
 
-export default connect(mapStateToProps)(CardGrid)
+export default React.memo(connect(mapStateToProps)(CardGrid))
